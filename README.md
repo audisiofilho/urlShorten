@@ -46,7 +46,7 @@ urlShorten Link:  https://urlencurt.netlify.app
 
 ## Demonstração
 
-Link de video de demonstração: https://share.vidyard.com/watch/YvNMC2KSWNuRtV9u4fsQVB
+Link de video de demonstração do urlShorten: https://share.vidyard.com/watch/YvNMC2KSWNuRtV9u4fsQVB
 
 
 ## Licença
@@ -56,5 +56,5 @@ Link de video de demonstração: https://share.vidyard.com/watch/YvNMC2KSWNuRtV9
 
 ## Autores
 
-- [@audisiofilho](https://github.com/audisiofilho)
+- [@audisiofilho](https://github.com/audisiofilho) 
 

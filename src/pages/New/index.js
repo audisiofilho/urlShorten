@@ -48,6 +48,7 @@ export default function New() {
             shortLink: data.url.shortLink,
             fullLink: data.url.fullLink,
             nomePersonalizado: nomePersonalizado,
+            fav: 0,
             title: data.url.title,
             created: new Date(),
           })

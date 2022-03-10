@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
-import avatar from "../../assets/avatar.png";
 import "./header.css";
 
 import { Link } from "react-router-dom";
-import { FiHome, FiUser, FiSettings } from "react-icons/fi";
+import { FiHome, FiStar, FiSettings } from "react-icons/fi";
 
 export default function Header() {
   const { user } = useContext(AuthContext);
@@ -18,6 +17,10 @@ export default function Header() {
       <Link to="/dashboard">
         <FiHome color="#fff" size={24} />
         Ver Urls
+      </Link>
+      <Link to="/favoritos">
+        <FiStar color="#fff" size={24} />
+        Favoritos
       </Link>
 
       <Link to="/profile">

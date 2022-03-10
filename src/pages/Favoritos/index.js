@@ -1,13 +1,11 @@
 import { useState, useEffect, useContext } from "react";
-import "./dashboard.css";
+import "./favoritos.css";
 
 import Header from "../../components/Header";
 import Title from "../../components/Title";
-import { FiLink, FiPlus, FiTrash, FiStar } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { FiTrash, FiStar } from "react-icons/fi";
 import { format } from "date-fns";
 import { AuthContext } from "../../contexts/auth";
-import { useHistory } from "react-router-dom";
 
 import firebase from "../../services/firebaseConnection";
 import { toast } from "react-toastify";
@@ -19,14 +17,13 @@ export default function Dashboard() {
   const [isEmpty, setIsEmpty] = useState(false);
   const [lastDocs, setLastDocs] = useState();
 
-  const history = useHistory();
-
   const { user } = useContext(AuthContext);
 
   const listRef = firebase
     .firestore()
     .collection("urls")
     .where("userId", "==", user?.uid)
+    .where("fav", "==", 1)
     .orderBy("created", "desc");
 
   const listRef2 = firebase.firestore().collection("urls");
@@ -93,7 +90,6 @@ export default function Dashboard() {
         updateState(snapshot);
       });
   }
-
   async function handleFav(item) {
     if (item.fav === 1) {
       await listRef2
@@ -136,12 +132,12 @@ export default function Dashboard() {
       <div>
         <Header />
         <div className="content">
-          <Title name="Ulrs">
-            <FiLink size={25} />
+          <Title name="Favoritos">
+            <FiStar size={25} />
           </Title>
 
           <div className="container dashboard">
-            <span>Buscando Urls...</span>
+            <span>Buscando Urls Favoritas...</span>
           </div>
         </div>
       </div>
@@ -152,23 +148,15 @@ export default function Dashboard() {
     <div>
       <Header />
       <div className="content">
-        <Title name="Urls">
-          <FiLink size={25} />
+        <Title name="Favoritos">
+          <FiStar size={25} />
         </Title>
         {urls.length === 0 ? (
           <div className="container dashboard">
-            <span>Nenhuma url registrada...</span>
-            <Link to="/new" className="new">
-              <FiPlus size={25} color="#fff" />
-              Nova Url
-            </Link>
+            <span>Nenhuma url favorita...</span>
           </div>
         ) : (
           <>
-            <Link to="/new" className="new">
-              <FiPlus size={25} color="#fff" />
-              Nova Url
-            </Link>
             <table>
               <thead>
                 <tr>
@@ -221,7 +209,6 @@ export default function Dashboard() {
                             <FiStar color="#fff" size={17} />
                           </button>
                         )}
-
                         <button
                           className="action"
                           style={{ backgroundColor: "red" }}

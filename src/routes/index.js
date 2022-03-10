@@ -8,6 +8,7 @@ import Profile from "../pages/Profile";
 import New from "../pages/New";
 import Shorten from '../pages/Shorten';
 import Erro from '../pages/Erro';
+import Favoritos from '../pages/Favoritos'
 
 export default function Routes(){
     return(
@@ -18,6 +19,7 @@ export default function Routes(){
             <Route exact path="/dashboard" component={Dashboard} isPrivate/>
             <Route exact path="/profile" component={Profile} isPrivate/>
             <Route exact path="/new" component={New} isPrivate/>
+            <Route exact path="/favoritos" component={Favoritos} isPrivate/>
             <Route path="*"  component={Erro}/>
         </Switch>
     )
